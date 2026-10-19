@@ -9,13 +9,24 @@ let package = Package(
     products: [
         .library(
             name: "AIHelpSupportSDK",
-            targets: ["AIHelpSupportSDK"]
+            targets: ["AIHelpSupportSDK", "AIHelpResources"]
         )
     ],
     targets: [
         .binaryTarget(
             name: "AIHelpSupportSDK",
             path: "AIHelpSupportSDK.xcframework"
+        ),
+        .target(
+            name: "AIHelpResources",
+            dependencies: [],
+            path: "Sources/AIHelpResources",
+            exclude: [],
+            sources: ["AIHelpResources.m"],
+            resources: [
+                .copy("AIHelpSupportSDK.bundle")
+            ],
+            publicHeadersPath: "include"
         )
     ]
 )
